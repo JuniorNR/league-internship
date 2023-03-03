@@ -1,0 +1,15 @@
+@import url(./service/_service.css);
+
+/* components */
+@import url(./components/grid/main.css);
+
+body {
+  background-color: #1e1e1e;
+  margin-top: 100px;
+}
+
+.grid-container {
+  height: auto;
+  display: flex;
+  justify-content: center;
+}

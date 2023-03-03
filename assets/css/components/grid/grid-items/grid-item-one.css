@@ -1,0 +1,32 @@
+.grid__item_one {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 2;
+}
+
+.grid__item_title {
+  margin-top: 125px;
+  margin-bottom: 140px;
+}
+
+.grid__item_title > h1 {
+  font-family: var(--inter-semiBold);
+  font-size: 64px;
+  line-height: 110%;
+  text-align: center;
+}
+
+.grid__item_icons {
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+  margin: 0 auto;
+}
+
+.icons__item_btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
