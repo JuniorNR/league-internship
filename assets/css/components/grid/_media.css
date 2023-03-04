@@ -52,6 +52,7 @@
   .grid-container {
     margin-bottom: 150px;
   }
+
   .grid-container > .grid {
     grid-template-columns: repeat(4, 25%);
     grid-template-rows: 290px 185px 250px 250px 250px;
@@ -170,7 +171,6 @@
     grid-row: 7 / span 1;
     grid-column: 3 / span 1;
   }
-
 }
 
 @media (max-width: 320px) {
