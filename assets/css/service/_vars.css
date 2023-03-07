@@ -1,5 +1,6 @@
 :root {
   /* TODO: Значения max и min для того, чтобы стили не перезаписывали друг друга */
+	/* TODO: Переменные не работают в обычном css с media query. Необходимо подключить postCSS-плагин */
 
   /* breakpoints */
   /* --desktop-fhd-max: 1536px;
@@ -22,7 +23,7 @@
   --text-gray-100: #F2F2F2;
   --text-black-900: #000;
 
-  
+
   /* background colors */
   --bg-gray-800: #828282;
   --bg-beige-900: #A6806B;
