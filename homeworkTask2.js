@@ -25,7 +25,7 @@ function sortArr(arr, callback) {
 	return sortedArray
 }
 
-console.log(sortArr(arr, callbackSort))
+// console.log(sortArr(arr, callbackSort))
 
 
 // Второй способ. Через метод массива sort()
