@@ -13,19 +13,26 @@
 // 3.1 микрозадача
 // 3.2 Рендер задача (например изменение содержание элемента)
 
-setTimeout(() => {
+const promise1 = new Promise(resolve => {
+	resolve('microTask 2')
+})
+
+const promise2 = new Promise(resolve => {
 	console.log('microTask 1')
 
-	document.body.style.backgroundColor = 'black'
-}, 500)
-
-setTimeout(() => {
-	console.log('microTask 2')
-	console.log('microTask 3')
-}, 1000)
+	resolve('microTask 3')
+})
 
 setTimeout(() => {
 	console.log('microTask 4')
+	document.body.innerHTML = `<h1 style="color: #fff">Microtask 4</h1>`
+}, 4)
 
-	document.body.style.display = 'none'
-}, 1500)
+promise1.then(data => {
+	console.log(data)
+	document.body.style.backgroundColor = 'black'
+})
+
+promise2.then(data => {
+	console.log(data)
+})
