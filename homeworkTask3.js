@@ -16,17 +16,16 @@
 setTimeout(() => {
 	console.log('microTask 1')
 
-	setTimeout(() => {
-		console.log('microTask 2')
-		console.log('microTask 3')
-
-		setTimeout(() => {
-			console.log('microTask 4')
-
-			document.body.style.display = 'none'
-		}, 1500)
-
-	}, 1000)
-
 	document.body.style.backgroundColor = 'black'
 }, 500)
+
+setTimeout(() => {
+	console.log('microTask 2')
+	console.log('microTask 3')
+}, 1000)
+
+setTimeout(() => {
+	console.log('microTask 4')
+
+	document.body.style.display = 'none'
+}, 1500)
