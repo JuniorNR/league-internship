@@ -146,3 +146,57 @@ body {
 .post-add .input-field [type="submit"]:hover, .post-edit .input-field [type="submit"]:hover {
   background-color: rgb(0, 0, 160);
 }
+
+.random-image {
+  box-sizing: border-box;
+  border: 2px solid #000;
+  width: 250px;
+  height: 300px;
+}
+
+.random-image__wrapper {
+  width: 100%;
+  height: 250px;
+}
+
+.random-image__wrapper > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.random-image__form {
+  position: relative;
+  box-sizing: border-box;
+  height: 46px;
+  transition: all .3s;
+}
+
+.random-image__form > input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #00f;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+}
+
+.random-image__form > .success {
+  background-color: #0f0;
+  font-size: 18px;
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: all .3s;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}

@@ -1,5 +1,7 @@
 'use strict'
 
+
+// TODO: XMLHttpRequest requests
 const postsList = document.querySelector('.posts > ul')
 
 let posts = []
@@ -17,7 +19,7 @@ function getPosts(url) {
   })
 }
 
-getPosts('https://intership-liga.ru/tasks/')
+getPosts('https://intership-liga.ru/tasks')
   .then(data => {
     JSON.parse(data).forEach(item => posts.push(item))
     renderPosts(posts)
@@ -78,7 +80,6 @@ postAddForm.addEventListener('submit', (event) => {
     })
     .catch(error => console.error(error))
 })
-
 
 // delete post
 function deletePost(url) {
