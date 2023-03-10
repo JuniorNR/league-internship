@@ -1,9 +1,14 @@
 @import url(./_reset.css);
 
+body {
+  min-height: 100vh;
+}
+
 .wrapper {
   display: flex;
   justify-content: space-around;
   padding: 25px;
+  height: 450px;
 }
 
 .inner {
@@ -35,9 +40,29 @@
   padding: 25px;
   border: 2px solid #000;
   width: fit-content;
-  height: fit-content;
   transition: all .3s;
 }
+
+.post-add {
+  margin-bottom: 25px;
+}
+
+.posts {
+  overflow-y: scroll;
+}
+
+.posts::-webkit-scrollbar {
+  width: 5px;
+}
+
+.posts::-webkit-scrollbar-track {
+  background-color: orange;
+}
+
+.posts::-webkit-scrollbar-thumb {
+  background-color: #00f;  
+}
+
 
 .posts > ul {
 }
