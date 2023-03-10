@@ -1,15 +1,104 @@
-@import url(./service/_service.css);
+@import url(./_reset.css);
 
-/* components */
-@import url(./components/grid/main.css);
-
-body {
-  background-color: #1e1e1e;
-  margin-top: 100px;
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  padding: 25px;
 }
 
-.grid-container {
-  height: auto;
+.inner {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.posts, .post-add, .post-edit {
+  font-family: 'Roboto', sans-serif;
+  padding: 25px;
+  border: 2px solid #000;
+  width: fit-content;
+  height: fit-content;
+}
+
+.posts > ul {
+}
+
+.posts > ul > li {
+  
+}
+
+.posts > ul > li:not(:last-child) {
+  margin-bottom: 25px;
+}
+
+.posts .input-fields {
+
+}
+
+.input-fields > input {
+  border: none;
+  padding: 5px 10px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.input-fields > input:nth-child(1) {
+  background-color: #0f0;
+}
+
+.input-fields > input:nth-child(1):hover {
+  background-color: rgb(0, 160, 0);
+}
+
+.input-fields > input:nth-child(2) {
+  background-color: #f00;
+}
+
+.input-fields > input:nth-child(2):hover {
+  background-color: rgb(160, 0, 0);
+}
+
+.post-add, .post-edit {
+
+}
+
+.post-add__title, .post-edit__title {
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.post-add .input-field, .post-edit .input-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-add .input-field:not(:last-child), .post-edit .input-field:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.post-add .input-field > label {
+
+}
+
+.post-add .input-field [type="text"], .post-edit .input-field [type="text"] {
+  width: 50%;
+}
+
+.post-add .input-field [type="submit"], .post-edit .input-field [type="submit"] {
+  border: none;
+  background-color: #00f;
+  color: #fff;
+  width: 100%;
+  padding: 15px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.post-add .input-field [type="submit"]:hover, .post-edit .input-field [type="submit"]:hover {
+  background-color: rgb(0, 0, 160);
 }
