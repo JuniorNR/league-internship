@@ -3,7 +3,6 @@
 const postsList = document.querySelector('.posts > ul')
 
 let posts = []
-let newPosts = []
 
 // get posts
 function getPosts(url) {
@@ -25,17 +24,17 @@ getPosts('https://intership-liga.ru/tasks/')
   .catch(error => console.error(error))
 
 function renderPosts(posts) {
-  newPosts = structuredClone(posts)
-  posts.length = 0
 
-  if(newPosts.length !== 0) {
-    newPosts.forEach(item => {
+  if(posts.length !== 0) {
+    Array.from(postsList.children).forEach(item => item.remove())
+
+    posts.forEach(item => {
       const li = document.createElement('li')
       li.innerHTML = `
         <h3>${item.name.length <= 5 ? item.name : item.name.slice(0, 5)}</h3>
         <p>${item.info.length <= 5 ? item.info : item.info.slice(0, 5)}</p>
         <div class="input-fields">
-          <input type="button" value="edit" />
+          <input type="button" value="edit" data-id=${item.id} />
           <input type="button" value="delete" data-id=${item.id} />
         </div>
       `
@@ -43,7 +42,6 @@ function renderPosts(posts) {
     })
   }
 }
-
 
 // post add
 const postAddForm = document.querySelector('.post-add > form')
@@ -82,8 +80,6 @@ postAddForm.addEventListener('submit', (event) => {
 
 
 // delete post
-const postEditForm = document.querySelector('.post-edit > form')
-
 function deletePost(url) {
   return new Promise((resolve, reject) => {
     const request = new XMLHttpRequest()
@@ -99,8 +95,82 @@ postsList.addEventListener('click', (event) => {
   if(event.target.getAttribute('value') === 'delete') {
     deletePost('https://intership-liga.ru/tasks/' + event.target.dataset.id)
       .then(() => {
-        // TODO: доделать удаление
+        posts.forEach(item => {
+          if(item.id === +event.target.dataset.id) {
+            posts.splice(posts.indexOf(item), 1)
+          }
+        })
+        renderPosts(posts)
       })
       .catch(console.error)
   }
 })
+
+// edit post
+const postEditWrapper = document.querySelector('.post-edit')
+const postEditForm = document.querySelector('.post-edit > form')
+const inputName = postEditForm.querySelector('[name="name"]')
+const inputInfo = postEditForm.querySelector('[name="info"]')
+
+let postId = null
+
+postsList.addEventListener('click', (event) => {
+  if(event.target.getAttribute('value') === 'edit') {
+    posts.forEach(item => {
+      if(item.id === +event.target.dataset.id) {
+        postId = item.id
+        inputName.value = item.name
+        inputInfo.value = item.info
+        postEditWrapper.classList.remove('blur-bg')
+      }
+    })
+  }
+})
+
+postEditForm.addEventListener('submit', (event) => {
+  event.preventDefault()
+
+  const formData = new FormData(postEditForm)
+
+  formData.append('name', inputName.value)
+  formData.append('info', inputInfo.value)
+  formData.append('isImportant', false)
+  formData.append('isCompleted', true)
+
+  editPost('https://intership-liga.ru/tasks/' + postId, formData)
+    .then(data => {
+      const result = JSON.parse(data.response)
+
+      const newPosts = posts.map(item => {
+        if(item.id === result.id) {
+          return result
+        }
+        return item
+      })
+      
+      renderPosts(newPosts)
+
+      postEditWrapper.classList.add('blur-bg')
+    })
+    .catch(error => console.error(error))
+})
+
+function editPost(url, body) {
+  return new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest()
+
+    request.open('PATCH', url, false)
+    request.setRequestHeader('Content-type', 'application/json')
+    request.setRequestHeader('Accept', 'application/json')
+
+    request.onLoad = resolve(request)
+    request.onError = reject(request.status)
+
+    request.send(JSON.stringify({
+      name: body.get('name'),
+      info: body.get('info'),
+      isImportant: body.get('isImportant'),
+      IsCompleted: body.get('isCompleted')
+    }))
+  })
+}

@@ -12,7 +12,25 @@
   justify-content: space-between;
 }
 
+.blur-bg {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.post-edit.blur-bg:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  z-index: 2;
+}
+
 .posts, .post-add, .post-edit {
+  position: relative;
   font-family: 'Roboto', sans-serif;
   padding: 25px;
   border: 2px solid #000;
