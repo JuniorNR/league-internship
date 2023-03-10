@@ -3,6 +3,7 @@
 const postsList = document.querySelector('.posts > ul')
 
 let posts = []
+let newPosts = []
 
 // get posts
 function getPosts(url) {
@@ -24,8 +25,8 @@ getPosts('https://intership-liga.ru/tasks/')
   .catch(error => console.error(error))
 
 function renderPosts(posts) {
-
   if(posts.length !== 0) {
+    newPosts = posts
     Array.from(postsList.children).forEach(item => item.remove())
 
     posts.forEach(item => {
@@ -116,11 +117,12 @@ let postId = null
 
 postsList.addEventListener('click', (event) => {
   if(event.target.getAttribute('value') === 'edit') {
-    posts.forEach(item => {
+    newPosts.forEach(item => {
       if(item.id === +event.target.dataset.id) {
         postId = item.id
         inputName.value = item.name
         inputInfo.value = item.info
+
         postEditWrapper.classList.remove('blur-bg')
       }
     })
@@ -147,7 +149,7 @@ postEditForm.addEventListener('submit', (event) => {
         }
         return item
       })
-      
+
       renderPosts(newPosts)
 
       postEditWrapper.classList.add('blur-bg')

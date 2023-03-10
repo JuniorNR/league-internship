@@ -36,6 +36,7 @@
   border: 2px solid #000;
   width: fit-content;
   height: fit-content;
+  transition: all .3s;
 }
 
 .posts > ul {
