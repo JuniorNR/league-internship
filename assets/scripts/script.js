@@ -21,7 +21,11 @@ function getPosts(url) {
 
 getPosts('https://intership-liga.ru/tasks')
   .then(data => {
-    JSON.parse(data).forEach(item => posts.push(item))
+    JSON.parse(data).forEach(item => {
+      if(item.name && item.info) {
+        posts.push(item)
+      }
+    })
     renderPosts(posts)
   })
   .catch(error => console.error(error))

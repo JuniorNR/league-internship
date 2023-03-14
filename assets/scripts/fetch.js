@@ -122,8 +122,6 @@ function renderImage(url, message = null) {
       }, 1000)
     })()
   }
-
-
 }
 
 randomImageForm.addEventListener('submit', (event) => {
@@ -133,3 +131,4 @@ randomImageForm.addEventListener('submit', (event) => {
     .then(data => renderImage(data.message, 'Собака!'))
     .catch(console.error)
 })
+
