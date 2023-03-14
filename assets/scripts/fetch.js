@@ -72,9 +72,9 @@ function request(method = 'get', url, body) {
 }
 
 
-// request('get', 'https://intership-liga.ru/tasks', bodyPost)
-//   .then(data => console.log(data))
-//   .catch(error => console.log(error))
+request('get', 'https://intership-liga.ru/tasks', bodyPost)
+  .then(data => console.log(data))
+  .catch(error => console.log(error))
 
 // request('post', 'https://intership-liga.ru/tasks', bodyPost)
 //   .then(data => console.log(data))
